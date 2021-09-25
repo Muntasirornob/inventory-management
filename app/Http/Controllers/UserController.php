@@ -67,7 +67,7 @@ public function UpdateAdmin(Request $request,$id)
     $admin->username=$request->username;
     $admin->fullname=$request->fullname;
     $admin->email=$request->email;
-    $admin->username=$request->username;
+
     
           if($request->hasFile('image') && $request->image->isValid()){
             if(file_exists(public_path('admin_img/'.$admin->image))){
@@ -85,7 +85,7 @@ public function DeleteAdmin($id)
 {
     Admin::destroy($id);
     return redirect('admin/list');
-   
+    
 }
 
     // add Manager view page
