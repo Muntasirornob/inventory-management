@@ -1,5 +1,5 @@
 
- @extends('admin.admin_master')
+ @extends('./layout_master')
 
  {{-- section id is yeild name  --}}
 
@@ -35,7 +35,7 @@
                                             <div class="col-6">
                                                 <div class="text-end">
                                                     <h3 class="text-dark mt-1">$<span data-plugin="counterup">58,947</span></h3>
-                                                    <p class="text-muted mb-1 text-truncate">Total Revenue</p>
+                                                    <p class="text-muted mb-1 text-truncate">Total Admin</p>
                                                 </div>
                                             </div>
                                         </div> <!-- end row-->
@@ -55,7 +55,7 @@
                                             <div class="col-6">
                                                 <div class="text-end">
                                                     <h3 class="text-dark mt-1"><span data-plugin="counterup">127</span></h3>
-                                                    <p class="text-muted mb-1 text-truncate">Today's Sales</p>
+                                                    <p class="text-muted mb-1 text-truncate">Today Manager</p>
                                                 </div>
                                             </div>
                                         </div> <!-- end row-->
@@ -75,7 +75,7 @@
                                             <div class="col-6">
                                                 <div class="text-end">
                                                     <h3 class="text-dark mt-1"><span data-plugin="counterup">0.58</span>%</h3>
-                                                    <p class="text-muted mb-1 text-truncate">Conversion</p>
+                                                    <p class="text-muted mb-1 text-truncate">Total product</p>
                                                 </div>
                                             </div>
                                         </div> <!-- end row-->
@@ -95,7 +95,7 @@
                                             <div class="col-6">
                                                 <div class="text-end">
                                                     <h3 class="text-dark mt-1"><span data-plugin="counterup">78.41</span>k</h3>
-                                                    <p class="text-muted mb-1 text-truncate">Today's Visits</p>
+                                                    <p class="text-muted mb-1 text-truncate">Pending Users</p>
                                                 </div>
                                             </div>
                                         </div> <!-- end row-->
