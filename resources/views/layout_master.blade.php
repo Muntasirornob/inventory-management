@@ -1,58 +1,30 @@
 
-
 @include('./body.header')
 
         <!-- Begin page -->
         <div id="wrapper">
-
-            <!-- Topbar Start -->
-
-
-
-
-
-@include('./body.navbar')
-<!-- end Topbar -->
-
+       <!-- Topbar Start -->
+        @include('./body.navbar')
+        <!-- end Topbar -->
             <!-- ========== Left Sidebar Start ========== -->
-          
             @include('./body.sidebar')
             <!-- Left Sidebar End -->
-
-            <!-- ============================================================== -->
-            <!-- Start Page Content here -->
-            <!-- ============================================================== -->
-
-          
-
-            <!-- ============================================================== -->
-            <!-- End Page content -->
-            <!-- ============================================================== -->
-
-
         </div>
         <!-- END wrapper -->
-
-
       @yield('admin')
-
-    
-            
         <!-- /Right-bar -->
-
-           
         <!-- Right bar overlay-->
         <div class="rightbar-overlay"></div>
-<!-- {{ asset('backend/')}} -->
+        <!-- {{ asset('backend/')}} -->
+
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
         <!-- Vendor js -->
         <script src=" {{ asset('/assets/js/vendor.min.js')}}"></script>
-
         <!-- Plugins js-->
         <script src="{{ asset('/assets/libs/flatpickr/flatpickr.min.js')}}"></script>
         <script src="{{ asset('/assets/libs/apexcharts/apexcharts.min.js')}}"></script>
-
         <script src="{{ asset('/assets/libs/selectize/js/standalone/selectize.min.js')}}"></script>
-
         <!-- Dashboar 1 init js-->
         <script src="{{ asset('/assets/js/pages/dashboard-1.init.js')}}"></script>
            <!-- third party js -->
@@ -70,44 +42,74 @@
            <script src="{{ asset('/assets/libs/pdfmake/build/pdfmake.min.js')}}"></script>
            <script src="{{ asset('/assets/libs/pdfmake/build/vfs_fonts.js')}}"></script>
            <!-- third party js ends -->
-   
            <!-- Datatables init -->
            <script src="{{ asset('assets/js/pages/datatables.init.js')}}"></script>
-
         <!-- App js-->
         <script src="{{ asset('/assets/js/app.min.js')}}"></script>
         <script  src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-	
-  <script>
-    @if(Session::has('message'))
-    var type = "{{ Session::get('alert-type', 'info')}}"
-     switch (type) {
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-         case 'info':
-         toastr.info(" {{ Session::get('message') }} ");
-             break;
+ <!-- noster notify js function  start -->
+        <script>
 
-        case 'success':
-        toastr.success(" {{ Session::get('message') }} ");
-             break;
+        @if(Session::has('message'))
+        var type = "{{ Session::get('alert-type', 'info')}}"
+        switch (type) {
 
-        case 'warning':
-        toastr.warning(" {{ Session::get('message') }} ");
-             break;	 
-             
-        case 'error':
-        toastr.error(" {{ Session::get('message') }} ");
-             
-             
-              break;	 	 
-              default:
-            break;
-    }
-        
-     @endif		
+            case 'info':
+            toastr.info(" {{ Session::get('message') }} ");
+                break;
 
-    </script>
+            case 'success':
+            toastr.success(" {{ Session::get('message') }} ");
+                break;
 
-        
-    </body>
+            case 'warning':
+            toastr.warning(" {{ Session::get('message') }} ");
+                break;
+
+            case 'error':
+            toastr.error(" {{ Session::get('message') }} ");
+
+
+                  break;
+                  default:
+                break;
+        }
+
+        @endif
+
+        </script>
+
+
+
+         <script>
+    $(function() {
+        $(document).on('click', '#delete', function(e) {
+            // e.preventDefault();
+            var link = $(this).attr("href");
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085D6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                    )
+                }
+            })
+        }); // document end
+    }); // main funcations end
+</script>
+
+<!-- noster notify js function  End -->
+
+  </body>  <!-- end body-->
 </html>

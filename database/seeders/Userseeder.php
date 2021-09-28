@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\User;
+use App\Models\SuperAdmin;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -19,10 +20,21 @@ class Userseeder extends Seeder
     {
       $user= new User();
 
-      $user->name="mesba";
-      $user->email="mesba@gmail.com";
+      $user->name="superadmin";
+      $user->role=1;
+
+      $user->email="superadmin@gmail.com";
       $user->password= Hash::make("123456");
       $user->save();
-      
+
+
+      $user2= new User();
+
+      $user2->name="admin";
+      $user->role=2;
+      $user2->email="admin@gmail.com";
+      $user2->password= Hash::make("123456");
+      $user2->save();
+
     }
 }

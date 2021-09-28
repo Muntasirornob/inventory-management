@@ -8,6 +8,10 @@ use Spatie\Permission\Models\Permission as ModelsPermission;
 
 use Spatie\Permission\Models\Role;
 
+use App\Models\SuperAdmin;
+use App\Models\User;
+
+
 class PermissionSeeder extends Seeder
 {
     /**
@@ -18,16 +22,16 @@ class PermissionSeeder extends Seeder
     public function run()
     {
 
-//role create 
+//role create
 
-$superAdminRole = Role::create(['name'=>'Super_admin']);
+$superAdminRole = Role::create(['name'=>'superadmin']);
 $admin = Role::create(['name'=>'admin']);
 $manager = Role::create(['name'=>'Manager']);
 
 
 
 
-        $permissions= [
+        $superadminpermissions= [
             "admin.createPdf",
         //admin permission
            "admin.create",
@@ -35,7 +39,7 @@ $manager = Role::create(['name'=>'Manager']);
            "admin.delete",
            "admin.view",
 
-        //user permission       
+        //user permission
            "user.create",
            "user.update",
            "user.delete",
@@ -45,22 +49,57 @@ $manager = Role::create(['name'=>'Manager']);
            "product.update",
            "product.delete",
            "product.view"
-          
 
 
 
+        ];
+        $adminpermissions= [
+
+
+        //user permission
+           "user.create",
+           "user.update",
+           "user.delete",
+           "user.view",
+           //product permission
+           "product.create",
+           "product.update",
+           "product.delete",
+           "product.view"
 
 
 
+        ];
+        $managerpermissions= [
 
+           //product permission
+           "product.create",
+           "product.view"
 
 
 
         ];
 
-        for ($i=0; $i <count($permissions) ; $i++) { 
-            $permission = ModelsPermission::create(['name' => $permissions[$i]]);
-            $superAdminRole->givePermissionTo($permission);
+
+
+        for ($i=0; $i <count($superadminpermissions) ; $i++) {
+            $permission = ModelsPermission::create(['name' => $superadminpermissions[$i]]);
+
+
         }
+        $superAdminRole->syncPermissions($superadminpermissions);
+        $admin->syncPermissions( $adminpermissions);
+        $manager->syncPermissions($managerpermissions);
+
+        $sadmin= User::find(1);
+
+        $sadmin->assignRole('superadmin');
+
+        $sadmin= User::find(2);
+
+        $sadmin->assignRole('admin');
+
+
+
     }
 }

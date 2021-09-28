@@ -23,7 +23,10 @@
                 @csrf
                     <div class="mb-3">
                         <label for="category_name" class="form-label">Category Name<span class="text-danger">*</span></label>
-                        <input type="text" name="category_name" parsley-trigger="change" required placeholder="Enter Category name" class="form-control" id="category_name" />
+                        <input type="text" name="category_name" parsley-trigger="change"  placeholder="Enter Category name" class="form-control" id="category_name" />
+                        @error('category_name') 
+                         <span class="text-danger">{{ $message }}</span>
+                         @enderror
                     </div>
                     <div class="text-end">
                         <button class="btn btn-primary waves-effect waves-light" type="submit">Submit</button>

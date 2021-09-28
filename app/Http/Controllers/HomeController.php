@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-
+use App\Models\Admin;
+use App\Models\Manager;
+use App\Models\Product;
 class HomeController extends Controller
 {
     /**
@@ -23,7 +25,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-       
-        return view('admin.index');
+        $admin=Admin::all();
+        $adminCount=$admin->count();
+        $manager=Manager::all();
+        $manageCount=$manager->count();
+        $product=Product::all();
+        $productCount=$product->count();
+        return view ('admin.index',compact('adminCount','manageCount','productCount'));
+
     }
 }

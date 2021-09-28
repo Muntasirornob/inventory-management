@@ -17,7 +17,7 @@
         <div class="card">
             <div class="card-body">
                 <h3 class="header-title">Add Manager</h3>
-                
+
                 <form method="POST" action= "{{url('/update/product/'.$product->id)}}"   class="parsley-examples" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
@@ -50,17 +50,17 @@
                          <select name="category_id" class="form-control" required="" >
                     <option value="" selected="" disabled="">Select Brand</option>
                      @foreach($categories as $category)
-                         <option value="{{ $category->id }}">{{ $category->category_name }}</option>	
+                         <option value="{{ $category->id }}">{{ $category->category_name }}</option>
                              @endforeach
                          </select>
-                          @error('category_id') 
+                          @error('category_id')
                              <span class="text-danger">{{ $message }}</span>
-                     @enderror 
+                     @enderror
                      </div>
-                
+
                 </div>
-                   
-                
+
+
                     <div class="text-end">
                         <button class="btn btn-primary waves-effect waves-light" type="submit">Submit</button>
                         <button type="reset" class="btn btn-secondary waves-effect">Cancel</button>
